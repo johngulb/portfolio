@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-
+import styled from "styled-components";
+import Image from "next/image";
 interface ExperienceItemProps {
   companyName: string;
   companyUrl: string;
@@ -113,12 +113,23 @@ const StyledExperienceItem = styled.div`
   }
 `;
 
-export function ExperienceItem({ companyName, companyUrl, companyLogo, roles }: ExperienceItemProps) {
+export function ExperienceItem({
+  companyName,
+  companyUrl,
+  companyLogo,
+  roles,
+}: ExperienceItemProps) {
   return (
     <StyledExperienceItem className="experience-item">
       <div className="company">
         <a href={companyUrl} target="_blank" rel="noopener noreferrer">
-          <img src={companyLogo} alt={companyName} className="company-logo" />
+          <Image
+            src={companyLogo}
+            alt={companyName}
+            className="company-logo"
+            width={40}
+            height={40}
+          />
           {companyName}
         </a>
       </div>

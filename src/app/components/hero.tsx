@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import styled from 'styled-components';
+import Image from 'next/image';
 
 interface HeroProps {
   onExploreClick: () => void;
@@ -63,6 +64,7 @@ const StyledHero = styled.section`
     margin-bottom: 1.5rem;
     background: linear-gradient(45deg, #60a5fa, #a78bfa);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
@@ -97,10 +99,12 @@ export const Hero: FC<HeroProps> = ({ onExploreClick }) => {
   return (
     <StyledHero className="hero">
       <div className="hero-content">
-        <img
+        <Image
           src="/WiredInSamurai.jpeg"
           alt="WiredInSamurai"
           className="profile-image"
+          width={200}
+          height={200}
         />
         <h1>WiredInSamurai</h1>
         <p className="subtitle">Technology Builder for Communities</p>

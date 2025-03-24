@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled from "styled-components";
+import Image from "next/image";
 
 interface PortfolioItemProps {
   href: string;
@@ -61,15 +62,17 @@ const StyledPortfolioItem = styled.div`
   }
 `;
 
-export function PortfolioItem({ href, imageSrc, imageAlt, title, description }: PortfolioItemProps) {
+export function PortfolioItem({
+  href,
+  imageSrc,
+  imageAlt,
+  title,
+  description,
+}: PortfolioItemProps) {
   return (
     <StyledPortfolioItem className="portfolio-item">
-      <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <img src={imageSrc} alt={imageAlt} />
+      <a href={href} target="_blank" rel="noopener noreferrer">
+        <Image src={imageSrc} alt={imageAlt} width={200} height={200} />
         <div className="item-content">
           <h3>{title}</h3>
           <p>{description}</p>
