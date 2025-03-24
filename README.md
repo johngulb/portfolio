@@ -9,9 +9,10 @@ A modern, responsive portfolio website built with Next.js and styled-components 
 - Project showcase with interactive cards
 - Professional experience timeline
 - Modern UI with smooth animations and transitions
-- SEO optimized
-- Deployed on Vercel
-- Page speed optimized 
+
+## Page speed optimized
+
+![Page Speed Optmized](https://github.com/johngulb/portfolio/blob/main/public/page-speed-portfolio.png "Page Speed Optmized")
 
 ## Tech Stack
 
