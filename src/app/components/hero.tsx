@@ -105,6 +105,7 @@ export const Hero: FC<HeroProps> = ({ onExploreClick }) => {
           className="profile-image"
           width={200}
           height={200}
+          loading="eager"
         />
         <h1>WiredInSamurai</h1>
         <p className="subtitle">Technology Builder for Communities</p>
