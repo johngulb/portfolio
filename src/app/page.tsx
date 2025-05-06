@@ -121,6 +121,13 @@ export default function Index() {
             description="A platform to connect Detroiter's at local events."
           />
           <PortfolioItem
+            href="https://gods.work"
+            imageSrc="/gods-work.jpeg"
+            imageAlt="Gods"
+            title="Gods Work"
+            description="Empowering Detroit artists to give back with free, custom-stretched canvas frames to make a positive impact on society."
+          />
+          <PortfolioItem
             href="https://stu.gods.work"
             imageSrc="/studio-202.jpeg"
             imageAlt="Studio 202"
@@ -128,11 +135,11 @@ export default function Index() {
             description="A studio space for Detroit artists to connect, collaborate, and create."
           />
           <PortfolioItem
-            href="https://gods.work"
-            imageSrc="/gods-work.jpeg"
-            imageAlt="Gods"
-            title="Gods Work"
-            description="Empowering Detroit artists to give back with free, custom-stretched canvas frames to make a positive impact on society."
+            href="https://earth.gods.work"
+            imageSrc="/arts-for-earth-blank.jpeg"
+            imageAlt="ARTS FOR THE EARTH"
+            title="ARTS FOR THE EARTH"
+            description="A fundraiser event hosted by local artists where $2800 was raised for Water Protectors Network, Friends of the Rouge, & Greening of Detroit—supporting the vital work of protecting our planet and its future generations."
           />
           <PortfolioItem
             href="https://lord.smearington.theethial.ai"
