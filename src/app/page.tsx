@@ -1,13 +1,14 @@
-'use client';
+"use client";
 
-import styled from 'styled-components';
-import { PortfolioItem } from './components/portfolio-item';
-import { ExperienceItem } from './components/experience-item';
-import { Contact } from './components/contact';
-import { SectionTitle } from './components/section-title';
-import { Hero } from './components/hero';
+import styled from "styled-components";
+import { PortfolioItem } from "./components/portfolio-item";
+import { ExperienceItem } from "./components/experience-item";
+import { Contact } from "./components/contact";
+import { SectionTitle } from "./components/section-title";
+import { Hero } from "./components/hero";
 
 const StyledPage = styled.div`
+  font-family: 'VT323', 'Press Start 2P', monospace;
   @keyframes rotate {
     from {
       transform: rotate(0deg);
@@ -28,7 +29,7 @@ const StyledPage = styled.div`
   }
 
   .portfolio-section {
-    background: #f8fafc;
+    background: linear-gradient(135deg, #e2e8f0, #f8fafc);
   }
 
   .experience-section {
@@ -56,13 +57,25 @@ const StyledPage = styled.div`
       grid-template-columns: repeat(3, 1fr);
     }
   }
+  
+  .portfolio-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .portfolio-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+  }
 `;
 
 export default function Index() {
   const scrollToPortfolio = () => {
     document
-      .querySelector('.portfolio-section')
-      ?.scrollIntoView({ behavior: 'smooth' });
+      .querySelector(".portfolio-section")
+      ?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -98,7 +111,7 @@ export default function Index() {
             imageSrc="/pizza-party.jpg"
             imageAlt="Detroit Bitcoin Pizza Party"
             title="Detroit Bitcoin Pizza Party"
-            description="The Detroit edition of PizzaDAO’s Global Bitcoin Pizza Party joins forces with Art Night for an unforgettable evening of pizza, music, and interactive art!"
+            description="The Detroit edition of PizzaDAO's Global Bitcoin Pizza Party joins forces with Art Night for an unforgettable evening of pizza, music, and interactive art!"
           />
           <PortfolioItem
             href="https://builddetroit.xyz"
@@ -121,6 +134,13 @@ export default function Index() {
             title="Gods Work"
             description="Empowering Detroit artists to give back with free, custom-stretched canvas frames to make a positive impact on society."
           />
+          <PortfolioItem
+            href="https://lord.smearington.theethial.ai"
+            imageSrc="/lord-smearington.jpg"
+            imageAlt="Lord Smearington's Absurd Gallery"
+            title="Lord Smearington's Absurd Gallery"
+            description="An Interdimensional Art Gallery Experience, A Sui Overflow 2025 Hackathon Project – Minted on Sui, Judged by Madness"
+          />
         </div>
       </section>
 
@@ -133,10 +153,10 @@ export default function Index() {
           companyLogo="/dpop_labs_logo.jpeg"
           roles={[
             {
-              title: 'Founder',
-              duration: 'Jun 2023 - Present',
+              title: "Founder",
+              duration: "Jun 2023 - Present",
               description:
-                'Leading innovative technology solutions for community-driven projects in Detroit.',
+                "Leading innovative technology solutions for community-driven projects in Detroit.",
             },
           ]}
         />
@@ -147,16 +167,16 @@ export default function Index() {
           companyLogo="/benzinga_logo.jpeg"
           roles={[
             {
-              title: 'Product Development Manager',
-              duration: 'Jan 2020 - May 2024',
+              title: "Product Development Manager",
+              duration: "Jan 2020 - May 2024",
               description:
-                'Led product development initiatives and engineering teams, managing critical projects and implementing scalable solutions for financial technology platforms. Drove technical strategy and architecture decisions while mentoring team members.',
+                "Led product development initiatives and engineering teams, managing critical projects and implementing scalable solutions for financial technology platforms. Drove technical strategy and architecture decisions while mentoring team members.",
             },
             {
-              title: 'Full Stack Engineer',
-              duration: 'Feb 2019 - Jan 2020',
+              title: "Full Stack Engineer",
+              duration: "Feb 2019 - Jan 2020",
               description:
-                'Developed and maintained full-stack applications for financial market data and news delivery. Built robust APIs, real-time data processing systems, and responsive web interfaces serving millions of users.',
+                "Developed and maintained full-stack applications for financial market data and news delivery. Built robust APIs, real-time data processing systems, and responsive web interfaces serving millions of users.",
             },
           ]}
         />
@@ -167,10 +187,10 @@ export default function Index() {
           companyLogo="/myfab5.jpeg"
           roles={[
             {
-              title: 'Co-founder & Lead Developer',
-              duration: 'Dec 2012 - Aug 2018',
+              title: "Co-founder & Lead Developer",
+              duration: "Dec 2012 - Aug 2018",
               description:
-                'Built and scaled a community-powered media company reaching 2M+ food enthusiasts across 35 local publications. Developed CMS applications, marketing automation tools, and data processing pipelines to drive growth and engagement.',
+                "Built and scaled a community-powered media company reaching 2M+ food enthusiasts across 35 local publications. Developed CMS applications, marketing automation tools, and data processing pipelines to drive growth and engagement.",
             },
           ]}
         />

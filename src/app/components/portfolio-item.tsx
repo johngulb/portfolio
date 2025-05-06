@@ -26,9 +26,10 @@ const StyledPortfolioItem = styled.div`
     height: 200px;
     object-fit: cover;
     transition: transform 0.3s ease;
+    border-bottom: 2px solid #1e293b;
 
     @media (min-width: 768px) {
-      height: 240px;
+      height: 280px;
     }
   }
 
@@ -40,7 +41,7 @@ const StyledPortfolioItem = styled.div`
     padding: 1.5rem;
 
     @media (min-width: 768px) {
-      padding: 2rem;
+      padding: 1.5rem 2rem;
     }
 
     h3 {
