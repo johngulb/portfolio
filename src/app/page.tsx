@@ -107,6 +107,13 @@ export default function Index() {
             description="An immersive monthly event fostering connections between artists, collectors, and art enthusiasts."
           />
           <PortfolioItem
+            href="https://co.lab.builddetroit.xyz"
+            imageSrc="/co.lab-start.png"
+            imageAlt="Co.Lab"
+            title="Co.Lab"
+            description="A voice-first project planning tool for creative teams. Capture your collaborative conversations naturally, without interrupting your creative flow. Our AI automatically organizes your ideas into tasks, timelines, and action items. Share the structured plan, assign tasks, and track progress as a team."
+          />
+          <PortfolioItem
             href="https://pizza.builddetroit.xyz"
             imageSrc="/pizza-party.jpg"
             imageAlt="Detroit Bitcoin Pizza Party"
