@@ -8,7 +8,7 @@ import { SectionTitle } from "./components/section-title";
 import { Hero } from "./components/hero";
 
 const StyledPage = styled.div`
-  font-family: 'VT323', 'Press Start 2P', monospace;
+  font-family: "VT323", "Press Start 2P", monospace;
   @keyframes rotate {
     from {
       transform: rotate(0deg);
@@ -57,14 +57,14 @@ const StyledPage = styled.div`
       grid-template-columns: repeat(3, 1fr);
     }
   }
-  
+
   .portfolio-item {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
-  
+
   .portfolio-item:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
@@ -85,12 +85,33 @@ export default function Index() {
       <section className="portfolio-section">
         <SectionTitle>Featured Projects</SectionTitle>
         <div className="portfolio-grid">
-          <PortfolioItem
+          {/* <PortfolioItem
             href="https://github.com/buidl-renaissance"
             imageSrc="/digital-renaissance-hands.jpeg"
             imageAlt="Buidl Renaissance"
             title="Buidl Renaissance"
             description="A collaborative platform empowering developers to create and share impactful open source projects."
+          /> */}
+          <PortfolioItem
+            href="https://builddetroit.xyz"
+            imageSrc="/penobscot.jpeg"
+            imageAlt="Build Detroit"
+            title="Build Detroit"
+            description="BUIDL Detroit is a community-driven initiative empowering developers, designers, and creators to build open-source tools that support Detroit’s creative economy through digital identity, decentralized events, and community collaboration."
+          />
+          <PortfolioItem
+            href="https://co.lab.builddetroit.xyz"
+            imageSrc="/co.lab-start.png"
+            imageAlt="Co.Lab"
+            title="Co.Lab"
+            description="A voice-first project planning tool for creative teams. Capture your collaborative conversations naturally, without interrupting your creative flow. Our AI automatically organizes your ideas into tasks, timelines, and action items. Share the structured plan, assign tasks, and track progress as a team."
+          />
+          <PortfolioItem
+            href="https://lord.smearington.theethial.ai"
+            imageSrc="/lord-smearington.jpg"
+            imageAlt="Lord Smearington's Absurd Gallery"
+            title="Lord Smearington's Absurd Gallery"
+            description="Lord Smearington's Absurd Gallery is an interdimensional art experience and Sui Overflow 2025 Hackathon project that blends AI, storytelling, and blockchain to invite you into a surreal world where creativity and chaos collide. Come by May 17th, 2025 for the opening."
           />
           <PortfolioItem
             href="https://art.gods.work"
@@ -107,25 +128,19 @@ export default function Index() {
             description="An immersive monthly event fostering connections between artists, collectors, and art enthusiasts."
           />
           <PortfolioItem
-            href="https://co.lab.builddetroit.xyz"
-            imageSrc="/co.lab-start.png"
-            imageAlt="Co.Lab"
-            title="Co.Lab"
-            description="A voice-first project planning tool for creative teams. Capture your collaborative conversations naturally, without interrupting your creative flow. Our AI automatically organizes your ideas into tasks, timelines, and action items. Share the structured plan, assign tasks, and track progress as a team."
+            href="https://earth.gods.work"
+            imageSrc="/arts-for-earth-blank.jpeg"
+            imageAlt="ARTS FOR THE EARTH"
+            title="ARTS FOR THE EARTH"
+            description="A fundraiser event hosted by local artists where $2800 was raised for Water Protectors Network, Friends of the Rouge, & Greening of Detroit—supporting the vital work of protecting our planet and its future generations."
           />
+
           <PortfolioItem
             href="https://pizza.builddetroit.xyz"
             imageSrc="/pizza-party.jpg"
             imageAlt="Detroit Bitcoin Pizza Party"
             title="Detroit Bitcoin Pizza Party"
             description="The Detroit edition of PizzaDAO's Global Bitcoin Pizza Party joins forces with Art Night for an unforgettable evening of pizza, music, and interactive art!"
-          />
-          <PortfolioItem
-            href="https://builddetroit.xyz"
-            imageSrc="/penobscot.jpeg"
-            imageAlt="Build Detroit"
-            title="Build Detroit"
-            description="A platform to connect Detroiter's at local events."
           />
           <PortfolioItem
             href="https://gods.work"
@@ -140,20 +155,6 @@ export default function Index() {
             imageAlt="Studio 202"
             title="Studio 202"
             description="A studio space for Detroit artists to connect, collaborate, and create."
-          />
-          <PortfolioItem
-            href="https://earth.gods.work"
-            imageSrc="/arts-for-earth-blank.jpeg"
-            imageAlt="ARTS FOR THE EARTH"
-            title="ARTS FOR THE EARTH"
-            description="A fundraiser event hosted by local artists where $2800 was raised for Water Protectors Network, Friends of the Rouge, & Greening of Detroit—supporting the vital work of protecting our planet and its future generations."
-          />
-          <PortfolioItem
-            href="https://lord.smearington.theethial.ai"
-            imageSrc="/lord-smearington.jpg"
-            imageAlt="Lord Smearington's Absurd Gallery"
-            title="Lord Smearington's Absurd Gallery"
-            description="An Interdimensional Art Gallery Experience, A Sui Overflow 2025 Hackathon Project – Minted on Sui, Judged by Madness"
           />
         </div>
       </section>
