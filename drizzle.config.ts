@@ -1,3 +1,4 @@
+import "dotenv/config";
 import { defineConfig } from "drizzle-kit";
 
 const useLocal = process.env.USE_LOCAL === "true";
@@ -8,10 +9,10 @@ export default defineConfig({
   dialect: useLocal ? "sqlite" : "turso",
   dbCredentials: useLocal
     ? {
-        url: "./sqlite.db",
+        url: "./dev.sqlite3",
       }
     : {
         url: process.env.TURSO_DATABASE_URL!,
-        authToken: process.env.TURSO_AUTH_TOKEN,
+        authToken: process.env.TURSO_DATABASE_AUTH_TOKEN,
       },
 });
