@@ -9,8 +9,8 @@ export const resend = process.env.RESEND_API_KEY
   : null;
 
 // Default to testing email if not configured
-const CONTACT_EMAIL = process.env.CONTACT_EMAIL || "john@detroitartdao.com";
-const FROM_EMAIL = process.env.RESEND_FROM_EMAIL || "Contact Form <onboarding@resend.dev>";
+const CONTACT_EMAIL = process.env.CONTACT_EMAIL || "john@builddetroit.xyz";
+const FROM_EMAIL = process.env.RESEND_FROM_EMAIL || "Contact Form <john@builddetroit.xyz>";
 
 export async function sendContactNotification({
   name,
