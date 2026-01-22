@@ -6,48 +6,95 @@ import { ExperienceItem } from "./components/experience-item";
 import { Contact } from "./components/contact";
 import { SectionTitle } from "./components/section-title";
 import { Hero } from "./components/hero";
+import { Navbar } from "./components/navbar";
+import { Footer } from "./components/footer";
 
 const StyledPage = styled.div`
-  font-family: "VT323", "Press Start 2P", monospace;
-  @keyframes rotate {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+
+  @keyframes fadeInUp {
     from {
-      transform: rotate(0deg);
+      opacity: 0;
+      transform: translateY(30px);
     }
     to {
-      transform: rotate(360deg);
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
     }
   }
 
   .portfolio-section,
-  .experience-section,
-  .contact-section {
-    padding: 4rem 1rem;
+  .experience-section {
+    padding: 5rem 1rem;
 
     @media (min-width: 768px) {
-      padding: 6rem 2rem;
+      padding: 7rem 2rem;
     }
   }
 
   .portfolio-section {
-    background: linear-gradient(135deg, #e2e8f0, #f8fafc);
+    background: linear-gradient(180deg, #f1f5f9, #f8fafc);
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(96, 165, 250, 0.3),
+        transparent
+      );
+    }
   }
 
   .experience-section {
     background: linear-gradient(135deg, #0f172a, #1e293b);
     color: white;
-  }
+    position: relative;
 
-  .contact-section {
-    background: #fff;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(167, 139, 250, 0.4),
+        transparent
+      );
+    }
   }
 
   .portfolio-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.5rem;
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 0 0.5rem;
+
+    @media (min-width: 640px) {
+      gap: 2rem;
+      padding: 0 1rem;
+    }
 
     @media (min-width: 768px) {
       grid-template-columns: repeat(2, 1fr);
@@ -55,20 +102,36 @@ const StyledPage = styled.div`
 
     @media (min-width: 1024px) {
       grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
     }
   }
 
   .portfolio-item {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
   }
 
-  .portfolio-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+  .portfolio-item:nth-child(1) { animation-delay: 0.1s; }
+  .portfolio-item:nth-child(2) { animation-delay: 0.15s; }
+  .portfolio-item:nth-child(3) { animation-delay: 0.2s; }
+  .portfolio-item:nth-child(4) { animation-delay: 0.25s; }
+  .portfolio-item:nth-child(5) { animation-delay: 0.3s; }
+  .portfolio-item:nth-child(6) { animation-delay: 0.35s; }
+  .portfolio-item:nth-child(7) { animation-delay: 0.4s; }
+  .portfolio-item:nth-child(8) { animation-delay: 0.45s; }
+  .portfolio-item:nth-child(9) { animation-delay: 0.5s; }
+  .portfolio-item:nth-child(10) { animation-delay: 0.55s; }
+  .portfolio-item:nth-child(11) { animation-delay: 0.6s; }
+  .portfolio-item:nth-child(12) { animation-delay: 0.65s; }
+
+  .experience-item {
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
   }
+
+  .experience-item:nth-child(1) { animation-delay: 0.1s; }
+  .experience-item:nth-child(2) { animation-delay: 0.2s; }
+  .experience-item:nth-child(3) { animation-delay: 0.3s; }
 `;
 
 export default function Index() {
@@ -80,6 +143,7 @@ export default function Index() {
 
   return (
     <StyledPage>
+      <Navbar />
       <Hero onExploreClick={scrollToPortfolio} />
 
       <section className="portfolio-section">
@@ -240,6 +304,7 @@ export default function Index() {
       </section>
 
       <Contact />
+      <Footer />
     </StyledPage>
   );
 }
