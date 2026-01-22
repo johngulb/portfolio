@@ -92,12 +92,33 @@ export default function Index() {
             title="Buidl Renaissance"
             description="A collaborative platform empowering developers to create and share impactful open source projects."
           /> */}
-          <PortfolioItem
+          {/* <PortfolioItem
             href="https://builddetroit.xyz"
             imageSrc="/penobscot.jpeg"
             imageAlt="Build Detroit"
             title="Build Detroit"
             description="BUIDL Detroit is a community-driven initiative empowering developers, designers, and creators to build open-source tools that support Detroit’s creative economy through digital identity, decentralized events, and community collaboration."
+          /> */}
+          <PortfolioItem
+            href="https://renaissance.builddetroit.xyz"
+            imageSrc="/renaissance-city.png"
+            imageAlt="Renaissance City"
+            title="Renaissance City"
+            description="Discover events and connect with locals. A living app ecosystem where independent App Blocks connect into streets and neighborhoods—shaped by the people who show up and build. Available on the App Store."
+          />
+          <PortfolioItem
+            href="https://djq.builddetroit.xyz"
+            imageSrc="/djq-icon.png"
+            imageAlt="DJ Tap-In Queue"
+            title="DJ Tap-In Queue"
+            description="The Decks: Your city's dopest open decks experience. Tap in for a 20-minute set, link up for back-to-backs, and keep the party rolling. Features auto-timers, seamless changeovers, and networking tools for DJs to shine."
+          />
+          <PortfolioItem
+            href="https://games.builddetroit.xyz"
+            imageSrc="/game-night.png"
+            imageAlt="Game Night"
+            title="Game Night"
+            description="Renaissance City Games: In-person tournaments with real stakes. Compete in pool, chess, and euchre tournaments. Limited seats, winners rewarded."
           />
           <PortfolioItem
             href="https://co.lab.builddetroit.xyz"
@@ -107,7 +128,14 @@ export default function Index() {
             description="A voice-first project planning tool for creative teams. Capture your collaborative conversations naturally, without interrupting your creative flow. Our AI automatically organizes your ideas into tasks, timelines, and action items. Share the structured plan, assign tasks, and track progress as a team."
           />
           <PortfolioItem
-            href="https://lord.smearington.theethial.ai"
+            href="https://vibe.builddetroit.xyz"
+            imageSrc="/vibe-code-detroit.png"
+            imageAlt="Vibe Code Detroit"
+            title="Vibe Code Detroit"
+            description="A community of tech enthusiasts and creators coming together to build meaningful solutions through Vibe Coding. Collaborative coding sessions, workshops, and projects designed to uplift Detroit through innovation and creativity."
+          />
+          <PortfolioItem
+            href="https://lord.smearington.theethical.ai/events/unleashing-the-absurd"
             imageSrc="/lord-smearington.jpg"
             imageAlt="Lord Smearington's Absurd Gallery"
             title="Lord Smearington's Absurd Gallery"
