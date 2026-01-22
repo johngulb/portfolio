@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Image from "next/image";
+import Link from "next/link";
 
 interface ExperienceItemProps {
   companyName: string;
@@ -156,6 +157,37 @@ const StyledExperienceItem = styled.div`
       font-size: 1.05rem;
     }
   }
+
+  .learn-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+    padding: 0.6rem 1.25rem;
+    background: linear-gradient(135deg, rgba(96, 165, 250, 0.15), rgba(167, 139, 250, 0.15));
+    border: 1px solid rgba(96, 165, 250, 0.3);
+    border-radius: 8px;
+    color: #60a5fa;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: linear-gradient(135deg, rgba(96, 165, 250, 0.25), rgba(167, 139, 250, 0.25));
+      border-color: rgba(167, 139, 250, 0.5);
+      color: #a78bfa;
+      transform: translateX(4px);
+    }
+
+    .arrow {
+      transition: transform 0.3s ease;
+    }
+
+    &:hover .arrow {
+      transform: translateX(4px);
+    }
+  }
 `;
 
 export function ExperienceItem({
@@ -164,21 +196,33 @@ export function ExperienceItem({
   companyLogo,
   roles,
 }: ExperienceItemProps) {
+  const isInternalLink = companyUrl.startsWith("/");
+  
+  const linkContent = (
+    <>
+      <div className="company-logo-wrapper">
+        <Image
+          src={companyLogo}
+          alt={companyName}
+          className="company-logo"
+          fill
+          sizes="52px"
+        />
+      </div>
+      {companyName}
+    </>
+  );
+
   return (
     <StyledExperienceItem className="experience-item">
       <div className="company">
-        <a href={companyUrl} target="_blank" rel="noopener noreferrer">
-          <div className="company-logo-wrapper">
-            <Image
-              src={companyLogo}
-              alt={companyName}
-              className="company-logo"
-              fill
-              sizes="52px"
-            />
-          </div>
-          {companyName}
-        </a>
+        {isInternalLink ? (
+          <Link href={companyUrl}>{linkContent}</Link>
+        ) : (
+          <a href={companyUrl} target="_blank" rel="noopener noreferrer">
+            {linkContent}
+          </a>
+        )}
       </div>
       <div className="roles">
         {roles.map((role, index) => (
@@ -189,6 +233,11 @@ export function ExperienceItem({
           </div>
         ))}
       </div>
+      {isInternalLink && (
+        <Link href={companyUrl} className="learn-more">
+          Learn More <span className="arrow">→</span>
+        </Link>
+      )}
     </StyledExperienceItem>
   );
 }

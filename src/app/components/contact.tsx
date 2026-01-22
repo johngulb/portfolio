@@ -1,28 +1,192 @@
-import styled from 'styled-components';
-import { SectionTitle } from './section-title';
+"use client";
+
+import { useState, FormEvent } from "react";
+import styled from "styled-components";
+import { SectionTitle } from "./section-title";
 
 export function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    company: "",
+    message: "",
+  });
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    setStatus("loading");
+    setErrorMessage("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Something went wrong");
+      }
+
+      setStatus("success");
+      setFormData({ name: "", email: "", company: "", message: "" });
+    } catch (error) {
+      setStatus("error");
+      setErrorMessage(error instanceof Error ? error.message : "Failed to submit form");
+    }
+  };
+
   return (
     <StyledContactSection className="contact-section">
-      <SectionTitle>Get in Touch</SectionTitle>
+      <SectionTitle light>Start a Conversation</SectionTitle>
       <div className="contact-content">
         <p>
-          I&apos;m always interested in hearing about new projects and
-          opportunities. Whether you have a question or just want to say hi,
-          feel free to reach out!
+          Have a project in mind or want to discuss how I can help your
+          organization? Fill out the form below and I&apos;ll get back to you
+          within 24 hours.
         </p>
 
-        <a href="mailto:john@dpop.tech" className="cta-button">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-          >
-            <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
-            <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
-          </svg>
-          Send me an email
-        </a>
+        {status === "success" ? (
+          <div className="success-message">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+              <polyline points="22 4 12 14.01 9 11.01" />
+            </svg>
+            <h3>Message Sent!</h3>
+            <p>Thanks for reaching out. I&apos;ll get back to you within 24 hours.</p>
+            <button
+              type="button"
+              className="reset-button"
+              onClick={() => setStatus("idle")}
+            >
+              Send Another Message
+            </button>
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit} className="contact-form">
+            {status === "error" && (
+              <div className="error-message">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="12" y1="8" x2="12" y2="12" />
+                  <line x1="12" y1="16" x2="12.01" y2="16" />
+                </svg>
+                <span>{errorMessage}</span>
+              </div>
+            )}
+
+            <div className="form-row">
+              <div className="form-group">
+                <label htmlFor="name">Name *</label>
+                <input
+                  type="text"
+                  id="name"
+                  required
+                  disabled={status === "loading"}
+                  value={formData.name}
+                  onChange={(e) =>
+                    setFormData({ ...formData, name: e.target.value })
+                  }
+                  placeholder="Your name"
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="email">Email *</label>
+                <input
+                  type="email"
+                  id="email"
+                  required
+                  disabled={status === "loading"}
+                  value={formData.email}
+                  onChange={(e) =>
+                    setFormData({ ...formData, email: e.target.value })
+                  }
+                  placeholder="you@example.com"
+                />
+              </div>
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="company">Company (optional)</label>
+              <input
+                type="text"
+                id="company"
+                disabled={status === "loading"}
+                value={formData.company}
+                onChange={(e) =>
+                  setFormData({ ...formData, company: e.target.value })
+                }
+                placeholder="Your organization"
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="message">Message *</label>
+              <textarea
+                id="message"
+                required
+                rows={5}
+                disabled={status === "loading"}
+                value={formData.message}
+                onChange={(e) =>
+                  setFormData({ ...formData, message: e.target.value })
+                }
+                placeholder="Tell me about your project or how I can help..."
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="submit-button"
+              disabled={status === "loading"}
+            >
+              {status === "loading" ? (
+                <>
+                  <span className="spinner" />
+                  Sending...
+                </>
+              ) : (
+                <>
+                  Send Message
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M22 2L11 13" />
+                    <path d="M22 2l-7 20-4-9-9-4 20-7z" />
+                  </svg>
+                </>
+              )}
+            </button>
+          </form>
+        )}
 
         <div className="social-divider">
           <span>or connect with me on</span>
@@ -68,7 +232,7 @@ export function Contact() {
 }
 
 const StyledContactSection = styled.section`
-  background: linear-gradient(180deg, #f8fafc, #fff);
+  background: linear-gradient(180deg, #0f172a, #1e293b);
   padding: 5rem 1rem 6rem;
 
   @media (min-width: 768px) {
@@ -76,40 +240,191 @@ const StyledContactSection = styled.section`
   }
 
   .contact-content {
-    max-width: 620px;
+    max-width: 600px;
     margin: 0 auto;
     text-align: center;
     padding: 0 1rem;
 
-    p {
-      color: #475569;
-      font-size: clamp(1.05rem, 3vw, 1.25rem);
+    > p {
+      color: #94a3b8;
+      font-size: clamp(1rem, 3vw, 1.15rem);
       margin-bottom: 2.5rem;
-      line-height: 1.8;
+      line-height: 1.7;
     }
 
-    .cta-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.75rem;
-      padding: 1rem 2.5rem;
-      background: linear-gradient(45deg, #60a5fa, #a78bfa);
-      color: white;
-      font-size: 1.1rem;
-      font-weight: 600;
-      border-radius: 50px;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(96, 165, 250, 0.3);
+    .success-message {
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      border-radius: 16px;
+      padding: 2.5rem 2rem;
+      text-align: center;
 
       svg {
-        width: 22px;
-        height: 22px;
+        width: 56px;
+        height: 56px;
+        color: #22c55e;
+        margin-bottom: 1rem;
       }
 
-      &:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 25px rgba(96, 165, 250, 0.4);
+      h3 {
+        color: #22c55e;
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      p {
+        color: #94a3b8;
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .reset-button {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #94a3b8;
+        padding: 0.75rem 1.5rem;
+        border-radius: 50px;
+        font-size: 0.95rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+          border-color: #60a5fa;
+          color: #60a5fa;
+        }
+      }
+    }
+
+    .error-message {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.5rem;
+      text-align: left;
+
+      svg {
+        width: 20px;
+        height: 20px;
+        color: #ef4444;
+        flex-shrink: 0;
+      }
+
+      span {
+        color: #fca5a5;
+        font-size: 0.95rem;
+      }
+    }
+
+    .contact-form {
+      text-align: left;
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+
+        @media (min-width: 640px) {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      .form-group {
+        margin-bottom: 1.25rem;
+
+        label {
+          display: block;
+          color: #e2e8f0;
+          font-size: 0.9rem;
+          font-weight: 500;
+          margin-bottom: 0.5rem;
+        }
+
+        input,
+        textarea {
+          width: 100%;
+          padding: 0.875rem 1rem;
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          border-radius: 12px;
+          color: white;
+          font-size: 1rem;
+          transition: all 0.3s ease;
+
+          &::placeholder {
+            color: #64748b;
+          }
+
+          &:focus {
+            outline: none;
+            border-color: #60a5fa;
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1);
+          }
+
+          &:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+          }
+        }
+
+        textarea {
+          resize: vertical;
+          min-height: 120px;
+        }
+      }
+
+      .submit-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+        width: 100%;
+        padding: 1rem 2rem;
+        margin-top: 0.5rem;
+        background: linear-gradient(45deg, #60a5fa, #a78bfa);
+        color: white;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(96, 165, 250, 0.3);
+
+        svg {
+          width: 20px;
+          height: 20px;
+        }
+
+        .spinner {
+          width: 20px;
+          height: 20px;
+          border: 2px solid rgba(255, 255, 255, 0.3);
+          border-top-color: white;
+          border-radius: 50%;
+          animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+          to {
+            transform: rotate(360deg);
+          }
+        }
+
+        &:hover:not(:disabled) {
+          transform: translateY(-3px);
+          box-shadow: 0 8px 25px rgba(96, 165, 250, 0.4);
+        }
+
+        &:disabled {
+          opacity: 0.8;
+          cursor: not-allowed;
+        }
       }
     }
 
@@ -121,19 +436,19 @@ const StyledContactSection = styled.section`
 
       &::before,
       &::after {
-        content: '';
+        content: "";
         flex: 1;
         height: 1px;
         background: linear-gradient(
           90deg,
           transparent,
-          #e2e8f0,
+          rgba(255, 255, 255, 0.15),
           transparent
         );
       }
 
       span {
-        color: #94a3b8;
+        color: #64748b;
         font-size: 0.9rem;
         white-space: nowrap;
       }
@@ -154,10 +469,10 @@ const StyledContactSection = styled.section`
         align-items: center;
         gap: 0.5rem;
         padding: 0.75rem 1.25rem;
-        background: white;
-        border: 2px solid #e2e8f0;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 12px;
-        color: #475569;
+        color: #94a3b8;
         font-size: 0.95rem;
         font-weight: 500;
         transition: all 0.3s ease;
@@ -168,20 +483,19 @@ const StyledContactSection = styled.section`
         }
 
         svg {
-          width: 22px;
-          height: 22px;
+          width: 20px;
+          height: 20px;
           color: #64748b;
           transition: color 0.3s ease;
         }
 
         &:hover {
           border-color: #60a5fa;
-          color: #3b82f6;
-          transform: translateY(-2px);
-          box-shadow: 0 4px 12px rgba(96, 165, 250, 0.15);
+          color: #60a5fa;
+          background: rgba(96, 165, 250, 0.1);
 
           svg {
-            color: #3b82f6;
+            color: #60a5fa;
           }
         }
       }

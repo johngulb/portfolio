@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Image from 'next/image';
 
 interface HeroProps {
-  onExploreClick: () => void;
+  onCtaClick: () => void;
 }
 
 const StyledHero = styled.section`
@@ -89,46 +89,68 @@ const StyledHero = styled.section`
     z-index: 1;
   }
 
-  .profile-image {
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 2rem;
-    border: 4px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    animation: scaleIn 0.8s ease forwards;
+  .hero-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    animation: fadeInUp 0.8s ease forwards;
 
-    @media (min-width: 768px) {
-      width: 180px;
-      height: 180px;
+    .profile-image {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+
+      @media (min-width: 768px) {
+        width: 64px;
+        height: 64px;
+      }
+    }
+
+    .name-badge {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #e2e8f0;
+      
+      @media (min-width: 768px) {
+        font-size: 1.25rem;
+      }
     }
   }
 
   h1 {
-    font-size: clamp(2.5rem, 8vw, 4rem);
+    font-size: clamp(2rem, 7vw, 3.5rem);
     font-weight: 800;
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
     background: linear-gradient(45deg, #60a5fa, #a78bfa, #60a5fa);
     background-size: 200% 200%;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: fadeInUp 0.8s ease forwards, gradientRotate 5s linear infinite;
-    animation-delay: 0.2s;
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 0.15s;
     opacity: 0;
     letter-spacing: -0.02em;
+    line-height: 1.15;
+    max-width: 800px;
   }
 
   .subtitle {
-    font-size: clamp(1.1rem, 4vw, 1.5rem);
+    font-size: clamp(1rem, 3vw, 1.25rem);
     margin-bottom: 2.5rem;
     color: #94a3b8;
     font-weight: 400;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.3px;
+    line-height: 1.6;
     animation: fadeInUp 0.8s ease forwards;
-    animation-delay: 0.4s;
+    animation-delay: 0.3s;
     opacity: 0;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .cta-button {
@@ -143,7 +165,7 @@ const StyledHero = styled.section`
     transition: all 0.3s ease;
     box-shadow: 0 4px 20px rgba(96, 165, 250, 0.35);
     animation: fadeInUp 0.8s ease forwards;
-    animation-delay: 0.6s;
+    animation-delay: 0.45s;
     opacity: 0;
     display: inline-flex;
     align-items: center;
@@ -160,7 +182,7 @@ const StyledHero = styled.section`
       box-shadow: 0 8px 30px rgba(96, 165, 250, 0.5);
 
       svg {
-        transform: translateY(4px);
+        transform: translateX(4px);
       }
     }
   }
@@ -187,22 +209,27 @@ const StyledHero = styled.section`
   }
 `;
 
-export const Hero: FC<HeroProps> = ({ onExploreClick }) => {
+export const Hero: FC<HeroProps> = ({ onCtaClick }) => {
   return (
     <StyledHero className="hero">
       <div className="hero-content">
-        <Image
-          src="/WiredInSamurai.jpeg"
-          alt="WiredInSamurai"
-          className="profile-image"
-          width={180}
-          height={180}
-          priority
-        />
-        <h1>WiredInSamurai</h1>
-        <p className="subtitle">Technology Builder for Communities</p>
-        <button className="cta-button" onClick={onExploreClick}>
-          Explore My Work
+        <div className="hero-top">
+          <Image
+            src="/WiredInSamurai.jpeg"
+            alt="John Gulbronson"
+            className="profile-image"
+            width={64}
+            height={64}
+            priority
+          />
+          <span className="name-badge">John Gulbronson</span>
+        </div>
+        <h1>Build Technology That Moves Communities Forward</h1>
+        <p className="subtitle">
+          Technical consulting for startups, nonprofits, and organizations ready to create meaningful impact through software, AI, and product strategy.
+        </p>
+        <button className="cta-button" onClick={onCtaClick}>
+          Let&apos;s Talk
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -212,7 +239,7 @@ export const Hero: FC<HeroProps> = ({ onExploreClick }) => {
             strokeLinecap="round"
             strokeLinejoin="round"
           >
-            <path d="M12 5v14M5 12l7 7 7-7" />
+            <path d="M5 12h14M12 5l7 7-7 7" />
           </svg>
         </button>
       </div>

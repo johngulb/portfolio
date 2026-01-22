@@ -3,24 +3,24 @@ import { StyledComponentsRegistry } from './registry';
 
 export const metadata = {
   metadataBase: new URL('https://portfolio.gods.work'),
-  title: 'WiredInSamurai - Technology Builder for Communities',
-  description: 'Portfolio of WiredInSamurai, a technology builder focused on creating innovative solutions for communities. View featured projects and work experience.',
+  title: 'John Gulbronson | Technical Consulting for Communities',
+  description: 'Technical consulting for startups, nonprofits, and organizations. Custom software development, product strategy, fractional CTO services, AI integration, and community tech solutions.',
   openGraph: {
-    title: 'WiredInSamurai - Technology Builder for Communities',
-    description: 'Portfolio of WiredInSamurai, a technology builder focused on creating innovative solutions for communities. View featured projects and work experience.',
+    title: 'John Gulbronson | Technical Consulting for Communities',
+    description: 'Technical consulting for startups, nonprofits, and organizations. Custom software development, product strategy, fractional CTO services, AI integration, and community tech solutions.',
     images: [
       {
         url: '/WiredInSamurai.jpeg',
         width: 1200,
         height: 630,
-        alt: 'WiredInSamurai',
+        alt: 'John Gulbronson - Technical Consultant',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'WiredInSamurai - Technology Builder for Communities',
-    description: 'Portfolio of WiredInSamurai, a technology builder focused on creating innovative solutions for communities. View featured projects and work experience.',
+    title: 'John Gulbronson | Technical Consulting for Communities',
+    description: 'Technical consulting for startups, nonprofits, and organizations. Custom software development, product strategy, fractional CTO services, AI integration, and community tech solutions.',
     images: ['/WiredInSamurai.jpeg'],
   }
 };

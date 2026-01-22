@@ -6,20 +6,30 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio"
   },
   "dependencies": {
-    "next": "15.2.3",
+    "@libsql/client": "^0.17.0",
+    "better-sqlite3": "^12.6.2",
+    "drizzle-orm": "^0.45.1",
+    "next": "15.5.9",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "resend": "^6.8.0",
     "styled-components": "^6.1.16"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
+    "@types/better-sqlite3": "^7.6.13",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "drizzle-kit": "^0.31.8",
     "eslint": "^9",
     "eslint-config-next": "15.2.3",
     "tailwindcss": "^4",
