@@ -8,6 +8,10 @@ export const resend = process.env.RESEND_API_KEY
   ? new Resend(process.env.RESEND_API_KEY)
   : null;
 
+// Default to testing email if not configured
+const CONTACT_EMAIL = process.env.CONTACT_EMAIL || "john@detroitartdao.com";
+const FROM_EMAIL = process.env.RESEND_FROM_EMAIL || "Contact Form <onboarding@resend.dev>";
+
 export async function sendContactNotification({
   name,
   email,
@@ -25,8 +29,8 @@ export async function sendContactNotification({
   }
 
   const { data, error } = await resend.emails.send({
-    from: "Contact Form <onboarding@resend.dev>",
-    to: ["john@builddetroit.xyz"],
+    from: FROM_EMAIL,
+    to: [CONTACT_EMAIL],
     subject: `New Contact Form Submission from ${name}`,
     html: `
       <h2>New Contact Form Submission</h2>
