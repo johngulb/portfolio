@@ -1,6 +1,5 @@
-import { FC } from 'react';
-import styled from 'styled-components';
-import Image from 'next/image';
+import { FC } from "react";
+import styled from "styled-components";
 
 interface HeroProps {
   onCtaClick: () => void;
@@ -20,25 +19,25 @@ const StyledHero = styled.section`
   padding: 2rem;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     width: 200%;
     height: 200%;
     background: radial-gradient(
-      circle at 30% 30%,
-      rgba(96, 165, 250, 0.08) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 70% 70%,
-      rgba(167, 139, 250, 0.08) 0%,
-      transparent 50%
-    );
+        circle at 30% 30%,
+        rgba(96, 165, 250, 0.08) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 70% 70%,
+        rgba(167, 139, 250, 0.08) 0%,
+        transparent 50%
+      );
     animation: pulse 8s ease-in-out infinite;
   }
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -50,7 +49,8 @@ const StyledHero = styled.section`
   }
 
   @keyframes pulse {
-    0%, 100% {
+    0%,
+    100% {
       transform: scale(1);
       opacity: 1;
     }
@@ -71,17 +71,6 @@ const StyledHero = styled.section`
     }
   }
 
-  @keyframes scaleIn {
-    from {
-      opacity: 0;
-      transform: scale(0.8);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-
   .hero-content {
     max-width: 900px;
     padding: 1.5rem;
@@ -89,91 +78,108 @@ const StyledHero = styled.section`
     z-index: 1;
   }
 
-  .hero-top {
-    display: flex;
+  .eyebrow {
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    gap: 1rem;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #60a5fa;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
     margin-bottom: 1.5rem;
     animation: fadeInUp 0.8s ease forwards;
 
-    .profile-image {
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid rgba(255, 255, 255, 0.2);
-
-      @media (min-width: 768px) {
-        width: 64px;
-        height: 64px;
-      }
+    &::before,
+    &::after {
+      content: "";
+      width: 24px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #60a5fa);
     }
 
-    .name-badge {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: #e2e8f0;
-      
-      @media (min-width: 768px) {
-        font-size: 1.25rem;
+    &::after {
+      background: linear-gradient(90deg, #60a5fa, transparent);
+    }
+
+    @media (min-width: 768px) {
+      font-size: 0.95rem;
+
+      &::before,
+      &::after {
+        width: 40px;
       }
     }
   }
 
   h1 {
-    font-size: clamp(2rem, 7vw, 3.5rem);
+    font-size: clamp(2.25rem, 7vw, 4rem);
     font-weight: 800;
-    margin-bottom: 1.25rem;
-    background: linear-gradient(45deg, #60a5fa, #a78bfa, #60a5fa);
-    background-size: 200% 200%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    margin-bottom: 1.5rem;
+    color: white;
     animation: fadeInUp 0.8s ease forwards;
     animation-delay: 0.15s;
     opacity: 0;
-    letter-spacing: -0.02em;
-    line-height: 1.15;
-    max-width: 800px;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    max-width: 850px;
+
+    .gradient {
+      background: linear-gradient(135deg, #60a5fa, #a78bfa);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
   }
 
   .subtitle {
-    font-size: clamp(1rem, 3vw, 1.25rem);
+    font-size: clamp(1.05rem, 2.9vw, 1.2rem);
     margin-bottom: 2.5rem;
     color: #94a3b8;
     font-weight: 400;
-    letter-spacing: 0.3px;
-    line-height: 1.6;
+    line-height: 1.65;
     animation: fadeInUp 0.8s ease forwards;
     animation-delay: 0.3s;
     opacity: 0;
-    max-width: 600px;
+    max-width: 620px;
     margin-left: auto;
     margin-right: auto;
   }
 
+  .cta-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 0.45s;
+    opacity: 0;
+
+    @media (min-width: 480px) {
+      flex-direction: row;
+      justify-content: center;
+      gap: 1.25rem;
+    }
+  }
+
   .cta-button {
-    padding: 1rem 2.5rem;
-    font-size: clamp(1rem, 3vw, 1.15rem);
+    padding: 1rem 2.25rem;
+    font-size: 1.05rem;
     font-weight: 600;
-    background: linear-gradient(45deg, #60a5fa, #a78bfa);
+    background: linear-gradient(135deg, #60a5fa, #a78bfa);
     border: none;
     border-radius: 50px;
     color: white;
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 4px 20px rgba(96, 165, 250, 0.35);
-    animation: fadeInUp 0.8s ease forwards;
-    animation-delay: 0.45s;
-    opacity: 0;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
 
     svg {
-      width: 20px;
-      height: 20px;
+      width: 18px;
+      height: 18px;
       transition: transform 0.3s ease;
     }
 
@@ -183,6 +189,35 @@ const StyledHero = styled.section`
 
       svg {
         transform: translateX(4px);
+      }
+    }
+  }
+
+  .secondary-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #94a3b8;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 0.75rem 1.25rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+
+    svg {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover {
+      color: #60a5fa;
+      border-color: rgba(96, 165, 250, 0.3);
+      background: rgba(96, 165, 250, 0.05);
+
+      svg {
+        transform: translateY(2px);
       }
     }
   }
@@ -204,8 +239,13 @@ const StyledHero = styled.section`
   }
 
   @keyframes bounce {
-    0%, 100% { transform: translateX(-50%) translateY(0); }
-    50% { transform: translateX(-50%) translateY(8px); }
+    0%,
+    100% {
+      transform: translateX(-50%) translateY(0);
+    }
+    50% {
+      transform: translateX(-50%) translateY(8px);
+    }
   }
 `;
 
@@ -213,35 +253,47 @@ export const Hero: FC<HeroProps> = ({ onCtaClick }) => {
   return (
     <StyledHero className="hero">
       <div className="hero-content">
-        <div className="hero-top">
-          <Image
-            src="/WiredInSamurai.jpeg"
-            alt="John Gulbronson"
-            className="profile-image"
-            width={64}
-            height={64}
-            priority
-          />
-          <span className="name-badge">John Gulbronson</span>
-        </div>
-        <h1>Build Technology That Moves Communities Forward</h1>
+        <div className="eyebrow">Technical Consulting</div>
+        <h1>
+          Build Technology That
+          <br />
+          <span className="gradient">Moves Communities Forward</span>
+        </h1>
         <p className="subtitle">
-          Technical consulting for startups, nonprofits, and organizations ready to create meaningful impact through software, AI, and product strategy.
+          Helping startups, nonprofits, and organizations create meaningful
+          impact through software architecture, AI strategy, and product
+          development.
         </p>
-        <button className="cta-button" onClick={onCtaClick}>
-          Let&apos;s Talk
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M5 12h14M12 5l7 7-7 7" />
-          </svg>
-        </button>
+        <div className="cta-group">
+          <button className="cta-button" onClick={onCtaClick}>
+            Start a Conversation
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </button>
+          <a href="#projects" className="secondary-link">
+            View Projects
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M12 5v14M5 12l7 7 7-7" />
+            </svg>
+          </a>
+        </div>
       </div>
       <div className="scroll-indicator">
         <svg

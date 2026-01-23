@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import Link from "next/link";
+import Image from "next/image";
 
 const StyledNav = styled.nav<{ scrolled: boolean }>`
   position: fixed;
@@ -10,7 +11,7 @@ const StyledNav = styled.nav<{ scrolled: boolean }>`
   left: 0;
   right: 0;
   z-index: 1000;
-  padding: 1rem 2rem;
+  padding: 1rem 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -21,36 +22,62 @@ const StyledNav = styled.nav<{ scrolled: boolean }>`
   box-shadow: ${(props) =>
     props.scrolled ? "0 2px 20px rgba(0, 0, 0, 0.1)" : "none"};
 
+  @media (min-width: 768px) {
+    padding: 1rem 2rem;
+  }
+
   .logo {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: white;
-    cursor: pointer;
-    background: linear-gradient(45deg, #60a5fa, #a78bfa);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    transition: opacity 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
     text-decoration: none;
+    transition: opacity 0.3s ease;
 
     &:hover {
-      opacity: 0.8;
+      opacity: 0.85;
+    }
+
+    .profile-image {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(96, 165, 250, 0.4);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+      @media (min-width: 768px) {
+        width: 40px;
+        height: 40px;
+      }
+    }
+
+    .brand-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #60a5fa, #a78bfa);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      @media (min-width: 768px) {
+        font-size: 1.25rem;
+      }
     }
   }
 
   .nav-links {
     display: flex;
-    gap: 0.5rem;
+    gap: 0.25rem;
 
     @media (min-width: 768px) {
-      gap: 1rem;
+      gap: 0.75rem;
     }
   }
 
   .nav-link {
     color: rgba(255, 255, 255, 0.8);
-    padding: 0.5rem 0.75rem;
-    font-size: 0.9rem;
+    padding: 0.5rem 0.6rem;
+    font-size: 0.85rem;
     font-weight: 500;
     border-radius: 8px;
     cursor: pointer;
@@ -61,7 +88,7 @@ const StyledNav = styled.nav<{ scrolled: boolean }>`
 
     @media (min-width: 768px) {
       padding: 0.5rem 1rem;
-      font-size: 1rem;
+      font-size: 0.95rem;
     }
 
     &:hover {
@@ -93,7 +120,15 @@ export function Navbar() {
   return (
     <StyledNav scrolled={scrolled}>
       <Link href="/" className="logo">
-        John Gulbronson
+        <Image
+          src="/WiredInSamurai.jpeg"
+          alt="WiredInSamurai"
+          className="profile-image"
+          width={40}
+          height={40}
+          priority
+        />
+        <span className="brand-name">WiredInSamurai</span>
       </Link>
       <div className="nav-links">
         <button
