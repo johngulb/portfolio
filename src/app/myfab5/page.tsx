@@ -1,99 +1,24 @@
 "use client";
 
 import styled from "styled-components";
-import Image from "next/image";
-import Link from "next/link";
 import { Navbar } from "../components/navbar";
 import { Footer } from "../components/footer";
+import { ExperienceHero } from "../components/experience-hero";
 
 const StyledPage = styled.div`
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
   min-height: 100vh;
 
-  .hero {
-    background: linear-gradient(135deg, #0f172a, #1e293b);
-    padding: 10rem 2rem 5rem;
-    text-align: center;
-    position: relative;
-
-    @media (min-width: 768px) {
-      padding: 12rem 2rem 6rem;
-    }
-
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: #60a5fa;
-      font-size: 0.95rem;
-      margin-bottom: 2rem;
-      transition: all 0.3s ease;
-
-      svg {
-        width: 18px;
-        height: 18px;
-        transition: transform 0.3s ease;
-      }
-
-      &:hover {
-        color: #a78bfa;
-
-        svg {
-          transform: translateX(-4px);
-        }
-      }
-    }
-
-    .logo-wrapper {
-      width: 80px;
-      height: 80px;
-      border-radius: 20px;
-      overflow: hidden;
-      margin: 0 auto 2rem;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-
-      @media (min-width: 768px) {
-        width: 100px;
-        height: 100px;
-      }
-    }
-
-    h1 {
-      font-size: clamp(2.5rem, 6vw, 3.5rem);
-      font-weight: 800;
-      color: white;
-      margin-bottom: 1rem;
-    }
-
-    .role {
-      color: #60a5fa;
-      font-size: 1.15rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-
-    .focus {
-      color: #cbd5e1;
-      font-size: 1rem;
-      margin-bottom: 2rem;
-      font-style: italic;
-    }
-
-    .intro {
-      color: #f1f5f9;
-      font-size: clamp(1.05rem, 3vw, 1.2rem);
-      max-width: 650px;
-      margin: 0 auto;
-      line-height: 1.75;
-    }
+  .content-wrapper {
+    background: #fff;
+    width: 100%;
   }
 
   .content {
     max-width: 800px;
     margin: 0 auto;
     padding: 4rem 1.5rem;
-    background: #fff;
 
     @media (min-width: 768px) {
       padding: 5rem 2rem;
@@ -289,50 +214,26 @@ export default function MyFab5Page() {
     <StyledPage>
       <Navbar />
 
-      <div className="hero">
-        <Link href="/" className="back-link">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M19 12H5M12 19l-7-7 7-7" />
-          </svg>
-          Back to Home
-        </Link>
+      <ExperienceHero
+        logo="/myfab5.jpeg"
+        company="MyFab5"
+        role="Co-founder & Lead Engineer"
+        duration="Dec 2012 – Aug 2018"
+        focus="Zero-to-one product, full-stack ownership, iteration"
+        intro="MyFab5 (aka BestFoodFeed) grew from a side project into a community-powered media company reaching 5M+ food enthusiasts across 35 local publications. This is my founder-engineer story—where I learned to build, ship, and iterate in the real world."
+        highlights={[
+          { value: "5M+", label: "Users Reached" },
+          { value: "35", label: "Publications" },
+          { value: "6", label: "Years" },
+        ]}
+      />
 
-        <div className="logo-wrapper">
-          <Image
-            src="/myfab5.jpeg"
-            alt="MyFab5"
-            width={100}
-            height={100}
-            style={{ width: "100%", height: "100%", objectFit: "cover" }}
-          />
-        </div>
-
-        <h1>MyFab5</h1>
-        <p className="role">Co-founder & Lead Engineer</p>
-        <p className="focus">
-          Zero-to-one product, full-stack ownership, iteration
-        </p>
-        <p className="intro">
-          MyFab5 (originally BestFoodFeed) grew from a side project into a
-          community-powered media company reaching 2M+ food enthusiasts across
-          35 local publications. This is my founder-engineer story—where I
-          learned to build, ship, and iterate in the real world.
-        </p>
-      </div>
-
-      <div className="content">
-        <div className="section">
-          <h2>
-            <span className="number">1</span>
-            What I Owned
+      <div className="content-wrapper">
+        <div className="content">
+          <div className="section">
+            <h2>
+              <span className="number">1</span>
+              What I Owned
           </h2>
           <p>
             As co-founder and lead engineer, I had end-to-end ownership of
@@ -445,11 +346,12 @@ export default function MyFab5Page() {
             back on scope, it&apos;s because I&apos;ve seen projects fail from
             overreach.
           </p>
-          <div className="callout">
-            <p>
-              <strong>The difference:</strong> My advice comes from building and
-              running systems—not from reading about them.
-            </p>
+            <div className="callout">
+              <p>
+                <strong>The difference:</strong> My advice comes from building and
+                running systems—not from reading about them.
+              </p>
+            </div>
           </div>
         </div>
       </div>

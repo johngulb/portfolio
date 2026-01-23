@@ -1,99 +1,24 @@
 "use client";
 
 import styled from "styled-components";
-import Image from "next/image";
-import Link from "next/link";
 import { Navbar } from "../components/navbar";
 import { Footer } from "../components/footer";
+import { ExperienceHero } from "../components/experience-hero";
 
 const StyledPage = styled.div`
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
   min-height: 100vh;
 
-  .hero {
-    background: linear-gradient(135deg, #0f172a, #1e293b);
-    padding: 10rem 2rem 5rem;
-    text-align: center;
-    position: relative;
-
-    @media (min-width: 768px) {
-      padding: 12rem 2rem 6rem;
-    }
-
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: #60a5fa;
-      font-size: 0.95rem;
-      margin-bottom: 2rem;
-      transition: all 0.3s ease;
-
-      svg {
-        width: 18px;
-        height: 18px;
-        transition: transform 0.3s ease;
-      }
-
-      &:hover {
-        color: #a78bfa;
-
-        svg {
-          transform: translateX(-4px);
-        }
-      }
-    }
-
-    .logo-wrapper {
-      width: 80px;
-      height: 80px;
-      border-radius: 20px;
-      overflow: hidden;
-      margin: 0 auto 2rem;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-
-      @media (min-width: 768px) {
-        width: 100px;
-        height: 100px;
-      }
-    }
-
-    h1 {
-      font-size: clamp(2.5rem, 6vw, 3.5rem);
-      font-weight: 800;
-      color: white;
-      margin-bottom: 1rem;
-    }
-
-    .role {
-      color: #60a5fa;
-      font-size: 1.15rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-
-    .focus {
-      color: #cbd5e1;
-      font-size: 1rem;
-      margin-bottom: 2rem;
-      font-style: italic;
-    }
-
-    .intro {
-      color: #f1f5f9;
-      font-size: clamp(1.05rem, 3vw, 1.2rem);
-      max-width: 650px;
-      margin: 0 auto;
-      line-height: 1.75;
-    }
+  .content-wrapper {
+    background: #fff;
+    width: 100%;
   }
 
   .content {
     max-width: 800px;
     margin: 0 auto;
     padding: 4rem 1.5rem;
-    background: #fff;
 
     @media (min-width: 768px) {
       padding: 5rem 2rem;
@@ -269,48 +194,25 @@ export default function DPoPLabsPage() {
     <StyledPage>
       <Navbar />
 
-      <div className="hero">
-        <Link href="/" className="back-link">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M19 12H5M12 19l-7-7 7-7" />
-          </svg>
-          Back to Home
-        </Link>
+      <ExperienceHero
+        logo="/dpop_labs_logo.jpeg"
+        company="DPoP Labs"
+        role="Founder & Technical Architect"
+        duration="Jun 2023 – Present"
+        focus="Ecosystem engineering, identity, and creator-owned infrastructure"
+        intro="DPoP Labs is my technology studio for building next-generation digital ecosystems—with a core focus on creator ownership, modular platforms, and forward-thinking authentication systems."
+        highlights={[
+          { value: "6+", label: "App Blocks" },
+          { value: "1K+", label: "Users" },
+          { value: "100%", label: "Open Source" },
+        ]}
+      />
 
-        <div className="logo-wrapper">
-          <Image
-            src="/dpop_labs_logo.jpeg"
-            alt="DPoP Labs"
-            width={100}
-            height={100}
-            style={{ width: "100%", height: "100%", objectFit: "cover" }}
-          />
-        </div>
-
-        <h1>DPoP Labs</h1>
-        <p className="role">Founder & Technical Architect</p>
-        <p className="focus">
-          Ecosystem engineering, identity, and creator-owned infrastructure
-        </p>
-        <p className="intro">
-          DPoP Labs is my technology studio for building next-generation digital
-          ecosystems—with a core focus on creator ownership, modular platforms,
-          and forward-thinking authentication systems.
-        </p>
-      </div>
-
-      <div className="content">
-        <div className="section">
-          <p>
-            It functions as the R&D and infrastructure layer behind Renaissance
+      <div className="content-wrapper">
+        <div className="content">
+          <div className="section">
+            <p>
+              It functions as the R&D and infrastructure layer behind Renaissance
             City, where experimentation becomes production-ready systems. I
             design the systems that allow creators and communities to own,
             deploy, and evolve their digital presence—without relying on
@@ -418,7 +320,8 @@ export default function DPoPLabsPage() {
             <li>
               Long-term adaptability prioritized over rigid product definitions
             </li>
-          </ul>
+            </ul>
+          </div>
         </div>
       </div>
 
