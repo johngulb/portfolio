@@ -7,6 +7,7 @@ interface HeroProps {
 
 const StyledHero = styled.section`
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -16,7 +17,13 @@ const StyledHero = styled.section`
   color: white;
   position: relative;
   overflow: hidden;
-  padding: 2rem;
+  padding: 1.25rem;
+  padding-top: 5rem;
+
+  @media (min-width: 768px) {
+    padding: 2rem;
+    padding-top: 2rem;
+  }
 
   &::before {
     content: "";
@@ -73,27 +80,31 @@ const StyledHero = styled.section`
 
   .hero-content {
     max-width: 900px;
-    padding: 1.5rem;
+    padding: 0.5rem;
     position: relative;
     z-index: 1;
+
+    @media (min-width: 768px) {
+      padding: 1.5rem;
+    }
   }
 
   .eyebrow {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    font-size: 0.9rem;
+    gap: 0.4rem;
+    font-size: 0.75rem;
     font-weight: 500;
     color: #60a5fa;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 1.5rem;
+    letter-spacing: 0.08em;
+    margin-bottom: 1rem;
     animation: fadeInUp 0.8s ease forwards;
 
     &::before,
     &::after {
       content: "";
-      width: 24px;
+      width: 16px;
       height: 1px;
       background: linear-gradient(90deg, transparent, #60a5fa);
     }
@@ -104,6 +115,8 @@ const StyledHero = styled.section`
 
     @media (min-width: 768px) {
       font-size: 0.95rem;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
 
       &::before,
       &::after {
@@ -113,16 +126,21 @@ const StyledHero = styled.section`
   }
 
   h1 {
-    font-size: clamp(2.25rem, 7vw, 4rem);
+    font-size: clamp(1.75rem, 8vw, 4rem);
     font-weight: 800;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     color: white;
     animation: fadeInUp 0.8s ease forwards;
     animation-delay: 0.15s;
     opacity: 0;
     letter-spacing: -0.03em;
-    line-height: 1.1;
+    line-height: 1.15;
     max-width: 850px;
+
+    @media (min-width: 768px) {
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
+    }
 
     .gradient {
       background: linear-gradient(135deg, #60a5fa, #a78bfa);
@@ -133,38 +151,49 @@ const StyledHero = styled.section`
   }
 
   .subtitle {
-    font-size: clamp(1.05rem, 2.9vw, 1.2rem);
-    margin-bottom: 2.5rem;
+    font-size: clamp(0.95rem, 3.5vw, 1.2rem);
+    margin-bottom: 2rem;
     color: #94a3b8;
     font-weight: 400;
-    line-height: 1.65;
+    line-height: 1.6;
     animation: fadeInUp 0.8s ease forwards;
     animation-delay: 0.3s;
     opacity: 0;
     max-width: 620px;
     margin-left: auto;
     margin-right: auto;
+    padding: 0 0.5rem;
+
+    @media (min-width: 768px) {
+      margin-bottom: 2.5rem;
+      line-height: 1.65;
+      padding: 0;
+    }
   }
 
   .cta-group {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
+    gap: 0.75rem;
     animation: fadeInUp 0.8s ease forwards;
     animation-delay: 0.45s;
     opacity: 0;
+    width: 100%;
+    padding: 0 1rem;
 
     @media (min-width: 480px) {
       flex-direction: row;
       justify-content: center;
       gap: 1.25rem;
+      width: auto;
+      padding: 0;
     }
   }
 
   .cta-button {
-    padding: 1rem 2.25rem;
-    font-size: 1.05rem;
+    padding: 0.9rem 1.75rem;
+    font-size: 0.95rem;
     font-weight: 600;
     background: linear-gradient(135deg, #60a5fa, #a78bfa);
     border: none;
@@ -175,7 +204,17 @@ const StyledHero = styled.section`
     box-shadow: 0 4px 20px rgba(96, 165, 250, 0.35);
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
+    width: 100%;
+    max-width: 280px;
+
+    @media (min-width: 480px) {
+      width: auto;
+      max-width: none;
+      padding: 1rem 2.25rem;
+      font-size: 1.05rem;
+    }
 
     svg {
       width: 18px;
@@ -198,12 +237,17 @@ const StyledHero = styled.section`
     align-items: center;
     gap: 0.5rem;
     color: #94a3b8;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 500;
-    padding: 0.75rem 1.25rem;
+    padding: 0.6rem 1rem;
     border-radius: 50px;
     transition: all 0.3s ease;
     border: 1px solid transparent;
+
+    @media (min-width: 480px) {
+      font-size: 0.95rem;
+      padding: 0.75rem 1.25rem;
+    }
 
     svg {
       width: 16px;
@@ -224,12 +268,18 @@ const StyledHero = styled.section`
 
   .scroll-indicator {
     position: absolute;
-    bottom: 2rem;
+    bottom: 1.5rem;
     left: 50%;
     transform: translateX(-50%);
     animation: fadeInUp 0.8s ease forwards, bounce 2s ease infinite;
     animation-delay: 1s, 1.5s;
     opacity: 0;
+    display: none;
+
+    @media (min-width: 768px) {
+      display: block;
+      bottom: 2rem;
+    }
 
     svg {
       width: 24px;

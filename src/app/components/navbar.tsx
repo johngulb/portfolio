@@ -66,18 +66,18 @@ const StyledNav = styled.nav<{ scrolled: boolean }>`
   }
 
   .nav-links {
-    display: flex;
-    gap: 0.25rem;
+    display: none;
+    gap: 0.75rem;
 
     @media (min-width: 768px) {
-      gap: 0.75rem;
+      display: flex;
     }
   }
 
   .nav-link {
     color: rgba(255, 255, 255, 0.8);
-    padding: 0.5rem 0.6rem;
-    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.95rem;
     font-weight: 500;
     border-radius: 8px;
     cursor: pointer;
@@ -85,11 +85,6 @@ const StyledNav = styled.nav<{ scrolled: boolean }>`
     background: transparent;
     border: none;
     text-decoration: none;
-
-    @media (min-width: 768px) {
-      padding: 0.5rem 1rem;
-      font-size: 0.95rem;
-    }
 
     &:hover {
       color: white;
