@@ -54,18 +54,19 @@ export function Contact() {
 
         {status === "success" ? (
           <div className="success-message">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-              <polyline points="22 4 12 14.01 9 11.01" />
-            </svg>
+            <div className="icon-wrapper">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+            </div>
             <h3>Message Sent!</h3>
             <p>Thanks for reaching out. I&apos;ll get back to you within 24 hours.</p>
             <button
@@ -253,45 +254,63 @@ const StyledContactSection = styled.section`
     }
 
     .success-message {
-      background: rgba(34, 197, 94, 0.1);
-      border: 1px solid rgba(34, 197, 94, 0.3);
-      border-radius: 16px;
-      padding: 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(34, 197, 94, 0.08), rgba(34, 197, 94, 0.02));
+      border: 1px solid rgba(34, 197, 94, 0.2);
+      border-radius: 20px;
+      padding: 3rem 2rem;
       text-align: center;
 
-      svg {
-        width: 56px;
-        height: 56px;
-        color: #22c55e;
-        margin-bottom: 1rem;
+      .icon-wrapper {
+        width: 72px;
+        height: 72px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(34, 197, 94, 0.1));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+
+        svg {
+          width: 36px;
+          height: 36px;
+          color: #22c55e;
+        }
       }
 
       h3 {
-        color: #22c55e;
-        font-size: 1.5rem;
-        font-weight: 600;
-        margin-bottom: 0.5rem;
+        color: #f0fdf4;
+        font-size: 1.75rem;
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+        letter-spacing: -0.01em;
       }
 
       p {
         color: #94a3b8;
-        font-size: 1rem;
-        margin-bottom: 1.5rem;
+        font-size: 1.05rem;
+        margin-bottom: 2rem;
+        line-height: 1.6;
       }
 
       .reset-button {
-        background: transparent;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        color: #94a3b8;
-        padding: 0.75rem 1.5rem;
+        background: rgba(34, 197, 94, 0.1);
+        border: 1px solid rgba(34, 197, 94, 0.3);
+        color: #22c55e;
+        padding: 0.85rem 1.75rem;
         border-radius: 50px;
         font-size: 0.95rem;
+        font-weight: 500;
         cursor: pointer;
         transition: all 0.3s ease;
 
         &:hover {
-          border-color: #60a5fa;
-          color: #60a5fa;
+          background: rgba(34, 197, 94, 0.15);
+          border-color: rgba(34, 197, 94, 0.5);
+          transform: translateY(-2px);
         }
       }
     }
