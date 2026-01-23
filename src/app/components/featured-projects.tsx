@@ -241,7 +241,7 @@ const StyledFeaturedProjects = styled.section`
 
 export function FeaturedProjects() {
   return (
-    <StyledFeaturedProjects className="featured-projects-section">
+    <StyledFeaturedProjects id="projects" className="featured-projects-section">
       <div className="section-header">
         <h2>Recent Work</h2>
       </div>
